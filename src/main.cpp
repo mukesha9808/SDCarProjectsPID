@@ -33,14 +33,16 @@ string hasData(string s) {
 int main() {
   uWS::Hub h;
 
+  
   PID pid_speed;
   PID pid_steer;
   PID pid2;
+  
   /**
    * TODO: Initialize the pid variable.
    */
-  pid_steer.Init(4.5,0.02,60);
-  pid_speed.Init(0.25, 0.0001, 0.0);
+  pid_steer.Init(6.4, 0.0001,60);
+  pid_speed.Init(0.035, 0.0001, 0.0);
 
 	
   h.onMessage([&pid_steer, &pid_speed](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, 
@@ -80,7 +82,7 @@ int main() {
           
           //Get controlled input
           steer_value=pid_steer.TotalError();
-         
+          
           //Limit control input steer value
           if ( steer_value> 1) {
             steer_value=1;

@@ -49,6 +49,7 @@ class PID {
   
   /*Previous Error*/
   double prev_error;
+  double prev_i;
 };
 
 #endif  // PID_H
